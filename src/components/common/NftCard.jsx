@@ -22,7 +22,7 @@ const NftCard = ({ nft }) => {
       )}
 
       <div className="nft__item_wrap">
-        <Link to="/item-details">
+        <Link to={`/item-details/${nft?.nftId}`}>
           <img src={nft?.nftImage} className="lazy nft__item_preview" alt="" />
         </Link>
       </div>
