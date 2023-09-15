@@ -7,6 +7,7 @@ import Skeleton from "../UI/Skeleton";
 const ExploreItems = () => {
   const [nftArray, setNftArray] = useState([]);
   const [nftsToShow, setNftsToShow] = useState(8);
+  const [selectedFilter, setSelectedFilter] = useState(""); // State for selected filter
 
   const loadMoreNfts = () => {
     setNftsToShow(nftsToShow + 4);
@@ -16,7 +17,7 @@ const ExploreItems = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${selectedFilter}`
         );
         setNftArray(response.data);
       } catch (error) {
@@ -25,11 +26,18 @@ const ExploreItems = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedFilter]);
+
+  // Function to handle filter selection change
+  const handleFilterChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedFilter(selectedValue);
+  };
+
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="">
+        <select id="filter-items" defaultValue="" onChange={handleFilterChange}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
