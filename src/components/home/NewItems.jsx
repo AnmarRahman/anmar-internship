@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Skeleton from "../UI/Skeleton";
+import Countdown from "../UI/Countdown";
 
 const NewItems = () => {
   const [nftArray, setNftArray] = useState([]);
@@ -23,48 +24,6 @@ const NewItems = () => {
 
     fetchData();
   }, []);
-
-  // This useEffect hook will run whenever the nftArray or its items change
-  useEffect(() => {
-    const updateCountdowns = () => {
-      // Map over the nftArray and calculate countdowns for items with expiryDates
-      const updatedNftArray = nftArray.map((nft) => {
-        if (nft?.expiryDate) {
-          // Calculate the remaining time in milliseconds
-          const remainingTime = new Date(nft?.expiryDate) - Date.now();
-
-          if (remainingTime <= 0) {
-            // Set countdown to "00:00:00" when the item expires
-            return { ...nft, countdown: "00:00:00" };
-          }
-
-          // Calculate hours, minutes, and seconds
-          const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
-          const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
-          const seconds = Math.floor((remainingTime / 1000) % 60);
-
-          // Format the time as HH:MM:SS
-          const formattedTime = `${hours < 10 ? `0${hours}` : hours}:${
-            minutes < 10 ? `0${minutes}` : minutes
-          }:${seconds < 10 ? `0${seconds}` : seconds}`;
-
-          // Return the item with the updated countdown
-          return { ...nft, countdown: formattedTime };
-        }
-        // For items without expiryDate, return them as is
-        return nft;
-      });
-
-      // Update the state with the updatedNftArray
-      setNftArray(updatedNftArray);
-    };
-
-    // Set up an interval to call updateCountdowns every second
-    const interval = setInterval(updateCountdowns, 1000);
-
-    // Clear the interval when the component unmounts or when nftArray changes
-    return () => clearInterval(interval);
-  }, [nftArray]);
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -150,7 +109,9 @@ const NewItems = () => {
                         </Link>
                       </div>
                       {nft?.expiryDate && (
-                        <div className="de_countdown">{nft?.countdown}</div>
+                        <div className="de_countdown">
+                          <Countdown expiryDate={nft?.expiryDate} />
+                        </div>
                       )}
 
                       <div className="nft__item_wrap">
