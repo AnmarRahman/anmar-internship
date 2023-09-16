@@ -18,7 +18,7 @@ const BrowseByCategory = () => {
             data-aos-delay="100"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-image"></i>
@@ -31,7 +31,7 @@ const BrowseByCategory = () => {
             data-aos-delay="200"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-music"></i>
@@ -44,7 +44,7 @@ const BrowseByCategory = () => {
             data-aos-delay="300"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-search"></i>
@@ -57,7 +57,7 @@ const BrowseByCategory = () => {
             data-aos-delay="400"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-globe"></i>
@@ -67,10 +67,10 @@ const BrowseByCategory = () => {
           <div
             className="col-md-2 col-sm-4 col-6 mb-sm-30"
             data-aos="fade-left"
-            data-aos-delay="00"
+            data-aos-delay="500"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-vcard"></i>
@@ -83,7 +83,7 @@ const BrowseByCategory = () => {
             data-aos-delay="600"
             data-aos-easing="ease-in-out"
             data-aos-offset="0"
-            data-aos-duration="00"
+            data-aos-duration="1000"
           >
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-th"></i>
